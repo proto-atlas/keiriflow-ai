@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "keiriflow-ai",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-05-06",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "NEXT_PUBLIC_SUPABASE_URL": "https://qyxcgnthpgoqzgccybwq.supabase.co",
+    "AI_PROVIDER_MODE": "anthropic",
+    "ANTHROPIC_MODEL": "claude-sonnet-4-6",
+    "ANTHROPIC_MAX_TOKENS": "800",
+    "ANTHROPIC_TIMEOUT_MS": "60000",
+    "KEIRIFLOW_DEMO_RATE_LIMIT_WINDOW_SECONDS": "60",
+    "KEIRIFLOW_DEMO_RATE_LIMIT_MAX_REQUESTS": "6",
+    "KEIRIFLOW_DEMO_DAILY_AI_LIMIT": "30"
+  }
+}

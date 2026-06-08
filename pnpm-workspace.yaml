@@ -1,0 +1,12 @@
+#
+# pnpm approve-buildsの判断を共有するため、単一パッケージでもこの設定を残しています。
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
+
+# サプライチェーン攻撃対策: publish後1週間経過したバージョンのみinstall対象にする (pnpm 10.16以降)
+minimumReleaseAge: 10080
+minimumReleaseAgeExclude:
+  # GHSA修正版のみ、7日待機の例外にする
+  - hono@4.12.18
+  - ip-address@10.1.1
