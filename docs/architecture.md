@@ -148,9 +148,9 @@ CSVセルはExcel / spreadsheetで数式として解釈される先頭文字を�
 
 Cloudflare用の最小設定として、`open-next.config.ts` と `wrangler.jsonc` を追加しています。
 
-WindowsローカルではOpenNextのbundle生成時にsymlink権限で止まるため、Linux runnerで `pnpm cf:build` を確認するGitHub Actions workflowを追加しています。
+OpenNextのCloudflare向けbuildでは、pnpmの通常のnode_modules構成だとWindowsローカルでシンボリックリンク作成に失敗することがありました。そのため、このリポジトリでは `.npmrc` で `node-linker=hoisted` を指定しています。
 
-Linux CI上の `pnpm cf:build`、Cloudflare production envへのdeploy、公開URLでの主要API接続は確認済みです。公開URLでは、確認用キー付きの証憑登録、更新、承認、CSV出力、Supabase保存、Anthropic provider経路を最小件数で確認しています。
+WindowsローカルとLinux CI上の `pnpm cf:build`、Cloudflare production envへのdeploy、公開URLでの主要API接続は確認済みです。公開URLでは、確認用キー付きの証憑登録、更新、承認、CSV出力、Supabase保存、Anthropic provider経路を最小件数で確認しています。
 
 ## 現在の未確認事項
 
