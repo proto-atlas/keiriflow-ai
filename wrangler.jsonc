@@ -10,7 +10,7 @@
   },
   "vars": {
     "NEXT_PUBLIC_SUPABASE_URL": "https://qyxcgnthpgoqzgccybwq.supabase.co",
-    "AI_PROVIDER_MODE": "anthropic",
+    "AI_PROVIDER_MODE": "mock",
     "ANTHROPIC_MODEL": "claude-sonnet-4-6",
     "ANTHROPIC_MAX_TOKENS": "800",
     "ANTHROPIC_TIMEOUT_MS": "60000",

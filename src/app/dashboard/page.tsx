@@ -11,7 +11,16 @@ export const dynamic = "force-dynamic";
 
 export default async function DashboardPage() {
   const repository = getDocumentRepository();
-  const documents = await repository.listDocuments();
+  let documents = [] as Awaited<ReturnType<typeof repository.listDocuments>>;
+  let hasDocumentLoadError = false;
+
+  try {
+    documents = await repository.listDocuments();
+  } catch {
+    hasDocumentLoadError = true;
+    documents = [];
+  }
+
   const summary = getDashboardSummary(documents);
   const recentDocuments = documents.slice(0, 3);
 
@@ -102,6 +111,17 @@ export default async function DashboardPage() {
           </SectionCard>
 
           <aside className="flex flex-col gap-4">
+            {hasDocumentLoadError ? (
+              <article className="rounded-lg border border-red-200 bg-red-50 p-4">
+                <div className="flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4 text-red-700" />
+                  <h2 className="text-sm font-semibold text-red-950">データを取得できませんでした</h2>
+                </div>
+                <p className="mt-2 text-sm text-red-900">
+                  一部の初期表示データを取得できないため、一覧は空で表示しています。環境設定後に確認してください。
+                </p>
+              </article>
+            ) : null}
             <article className="rounded-lg border border-amber-200 bg-amber-50 p-5">
               <div className="flex items-center gap-3">
                 <AlertTriangle className="h-5 w-5 text-amber-700" />

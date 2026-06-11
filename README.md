@@ -1,5 +1,7 @@
 # KeiriFlow AI
 
+[![CI](https://github.com/proto-atlas/keiriflow-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/proto-atlas/keiriflow-ai/actions/workflows/ci.yml)
+
 KeiriFlow AIは、請求書・領収書をAIで読み取り、仕訳候補、警告、承認、監査ログ、CSV出力まで確認できる経理デモです。
 
 AIが処理を自動で確定するのではなく、候補を出し、人が確認・修正・承認してから次へ進める流れにしています。
