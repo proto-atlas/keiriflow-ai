@@ -138,7 +138,7 @@ CSVセルは、表計算ソフトが数式として評価する可能性があ�
 - 確認用キー / IP単位のrate limit
 - AI系routeの日次上限
 
-UI全体を通したE2Eは、今後の確認事項として残しています。Supabase接続、公開URLでの主要API接続、Anthropic provider経路は、Cloudflare上の確認用構成で最小件数を確認しています。APIを直接叩いた場合も、確定済み証憑の内容更新、承認依頼、承認応答はconflict errorを `409` にマップします。監査ログの `actorName` は現在の構成では固定値で、本番Auth連携時に実ユーザー名へ置き換える前提です。現時点では、このリポジトリの主張範囲に合わせて、業務ルールとserver-side境界のテストを優先しています。
+主要画面がエラー画面にならないことはPlaywrightで確認します。証憑登録から承認、CSV出力までの一連操作を通したE2Eは、今後の確認事項として残しています。Supabase接続、公開URLでの主要API接続、Anthropic provider経路は、Cloudflare上の確認用構成で最小件数を確認しています。APIを直接叩いた場合も、確定済み証憑の内容更新、承認依頼、承認応答はconflict errorを `409` にマップします。監査ログの `actorName` は現在の構成では固定値で、本番Auth連携時に実ユーザー名へ置き換える前提です。現時点では、このリポジトリの主張範囲に合わせて、業務ルールとserver-side境界のテストを優先しています。
 
 ## 12. Cloudflare Workers + OpenNextを公開先にする
 

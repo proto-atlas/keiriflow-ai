@@ -65,7 +65,8 @@ AIが処理を自動で確定するのではなく、候補を出し、人が確
 
 - `pnpm lint`: 通過
 - `pnpm typecheck`: 通過
-- `pnpm test`: 19 files / 118 tests通過
+- `pnpm test`: 21 files / 127 tests通過
+- `pnpm e2e`: 主要画面5ルート通過
 - `pnpm build`: 通過
 - GitHub CI: main branchで成功
 - Cloudflare build / deploy: 通過
@@ -89,6 +90,7 @@ pnpm dev
 pnpm lint
 pnpm typecheck
 pnpm test
+pnpm e2e
 pnpm build
 ```
 
@@ -105,7 +107,7 @@ pnpm build
 - 確認用キーによるユーザー認証
 - 外部providerの品質保証
 - アップロードファイル内容の完全な真正性検証
-- UI全体を通したE2E
+- 証憑登録から承認、CSV出力までの一連操作を通したE2E
 
 ## ライセンス
 

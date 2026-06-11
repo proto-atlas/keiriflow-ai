@@ -13,7 +13,8 @@ KeiriFlow AIの検証記録をまとめます。各記録は、その時点の�
 |---|---|---|
 | lint | 通過 | GitHub CIで確認 |
 | typecheck | 通過 | GitHub CIで確認 |
-| Vitest | 19 files / 118 tests通過 | 業務ルール、API境界、provider境界、確認用キー制限 |
+| Vitest | 21 files / 127 tests通過 | 業務ルール、API境界、provider境界、確認用キー制限 |
+| Playwright E2E | 主要画面5ルート通過 | `/dashboard`、`/invoices`、`/invoices/new`、`/invoices/export`、`/invoices/doc-001` |
 | build | 通過 | GitHub CIで確認 |
 | Cloudflare build / deploy | 通過 | Worker Version IDは外部サービス接続の記録を参照 |
 | Lighthouse mobile | 82 / 100 / 100 / 100 | Performance / Accessibility / Best Practices / SEO |

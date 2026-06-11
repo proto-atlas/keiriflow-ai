@@ -154,6 +154,6 @@ Linux CI上の `pnpm cf:build`、Cloudflare production envへのdeploy、公開U
 
 ## 現在の未確認事項
 
-- UI全体を通したE2E
+- 証憑登録から承認、CSV出力までの一連操作を通したE2E
 - 本番向け認証・権限管理
 - アップロードファイル内容のmagic byte検証
