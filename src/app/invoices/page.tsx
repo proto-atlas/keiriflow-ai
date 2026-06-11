@@ -8,7 +8,15 @@ export const dynamic = "force-dynamic";
 
 export default async function InvoicesPage() {
   const repository = getDocumentRepository();
-  const documents = await repository.listDocuments();
+  let documents = [] as Awaited<ReturnType<typeof repository.listDocuments>>;
+  let hasDocumentLoadError = false;
+
+  try {
+    documents = await repository.listDocuments();
+  } catch {
+    hasDocumentLoadError = true;
+    documents = [];
+  }
 
   return (
     <AppShell>
@@ -38,6 +46,11 @@ export default async function InvoicesPage() {
             </Link>
           </div>
         </header>
+        {hasDocumentLoadError ? (
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+            証憑一覧を取得できませんでした。環境設定後に再度確認してください。
+          </div>
+        ) : null}
         <InvoiceTable documents={documents} />
       </div>
     </AppShell>

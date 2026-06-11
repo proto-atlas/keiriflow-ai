@@ -14,7 +14,30 @@ type InvoiceDetailPageProps = {
 export default async function InvoiceDetailPage({ params }: InvoiceDetailPageProps) {
   const { id } = await params;
   const repository = getDocumentRepository();
-  const document = await repository.getDocument(id);
+  let document = null as Awaited<ReturnType<typeof repository.getDocument>>;
+  let hasDocumentLoadError = false;
+
+  try {
+    document = await repository.getDocument(id);
+  } catch {
+    hasDocumentLoadError = true;
+  }
+
+  if (hasDocumentLoadError) {
+    return (
+      <AppShell>
+        <div className="grid gap-6">
+          <header className="border-b border-slate-200 pb-6">
+            <p className="text-sm font-medium text-slate-500">Document Review</p>
+            <h1 className="mt-2 text-3xl font-semibold">証憑詳細</h1>
+          </header>
+          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+            証憑詳細を取得できませんでした。環境設定後に再度確認してください。
+          </div>
+        </div>
+      </AppShell>
+    );
+  }
 
   if (!document) {
     notFound();

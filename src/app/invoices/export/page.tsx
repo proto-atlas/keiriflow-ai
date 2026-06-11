@@ -7,7 +7,15 @@ export const dynamic = "force-dynamic";
 
 export default async function ExportPage() {
   const repository = getDocumentRepository();
-  const approvedDocuments = await repository.listDocuments({ status: "Approved" });
+  let approvedDocuments = [] as Awaited<ReturnType<typeof repository.listDocuments>>;
+  let hasDocumentLoadError = false;
+
+  try {
+    approvedDocuments = await repository.listDocuments({ status: "Approved" });
+  } catch {
+    hasDocumentLoadError = true;
+    approvedDocuments = [];
+  }
 
   return (
     <AppShell>
@@ -21,6 +29,11 @@ export default async function ExportPage() {
         </header>
         <SectionCard description="特定会計ソフト完全互換ではなく、汎用CSVとして扱います。" title="出力対象">
           <div className="grid gap-4">
+            {hasDocumentLoadError ? (
+              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-sm text-red-900">
+                承認済みデータを取得できませんでした。環境設定後に再度確認してください。
+              </div>
+            ) : null}
             <p className="text-sm text-slate-600">承認済みデータ: {approvedDocuments.length}件</p>
             <CsvDownloadButton />
           </div>
