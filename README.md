@@ -13,6 +13,14 @@ AIが処理を自動で確定するのではなく、候補を出し、人が確
 - 公開URL: https://keiriflow-ai.atlas-lab.workers.dev
 - GitHub: https://github.com/proto-atlas/keiriflow-ai
 
+## 短時間レビューガイド
+
+30秒で見る場合は、公開URLから `/dashboard`、`/invoices`、`/invoices/doc-001` を開くと、合成データの処理状況、証憑一覧、抽出結果と警告の表示を確認できます。
+
+確認用キーなしで見られる範囲は、トップページ、`/dashboard`、`/invoices`、`/invoices/[id]`、`/invoices/export` の合成データ表示です。証憑登録、更新、AI抽出、仕訳候補生成、承認、CSV出力の実行は確認用キーで制限しています。
+
+実装を見る場合は、まず [アーキテクチャ](docs/architecture.md)、[設計判断](docs/design-decisions.md)、[検証記録の一覧](docs/evidence/INDEX.md) を見てください。コードでは、保存先の切り替えと状態変更を扱う `src/lib/server/document-repository.ts`、AI候補生成を扱う `src/lib/ai/provider.ts`、確認用キーと呼び出し回数制限を扱う `src/lib/server/demo-rate-limit.ts` が入口になります。
+
 ## 主な流れ
 
 - `/dashboard` で処理状況と警告件数を確認する。
@@ -29,14 +37,6 @@ AIが処理を自動で確定するのではなく、候補を出し、人が確
 - モック動作: SupabaseやAnthropicの環境変数がない状態でも、用意したデータと固定応答で画面やAPIを確認できる動作。
 - Human-in-the-loop: AIの結果をそのまま確定せず、人が確認してから次へ進める設計。
 - 監査ログ: 誰がどの操作をしたかを後から確認するための履歴。
-
-## 確認方法
-
-30秒で見る場合は、公開URLのトップ、`/dashboard`、`/invoices` から合成データの一覧と証憑レビュー導線を確認できます。
-
-もう少し詳しく見る場合は、[アーキテクチャ](docs/architecture.md)、[設計判断](docs/design-decisions.md)、[検証記録の一覧](docs/evidence/INDEX.md) を確認してください。
-
-確認用キーが必要な操作は、証憑登録、更新、AI抽出、仕訳候補生成、承認、CSV出力です。公開URLで登録するファイルは合成データに限定します。機密情報、個人情報、実在取引先の証憑は投入しない前提です。
 
 ## 画面
 
@@ -70,7 +70,7 @@ AIが処理を自動で確定するのではなく、候補を出し、人が確
 - `pnpm build`: 通過
 - GitHub CI: main branchで成功
 - Cloudflare build / deploy: 通過
-- 外部サービス接続の確認: 合成画像1件で、アップロード、AI抽出、仕訳候補生成、承認、CSV出力、公開読み取りを確認
+- 外部サービス接続の確認: 合成画像1件で、アップロード、AI抽出、仕訳候補生成、承認、CSV出力、公開読み取りを特定時点で確認
 - Lighthouse: mobile 82 / 100 / 100 / 100、desktop 97 / 100 / 100 / 100
 
 各検証は、その時点の構成と合成データに対する結果です。税務判断、AI抽出精度の一般品質、本番負荷下の性能を示すものではありません。
