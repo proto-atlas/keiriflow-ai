@@ -35,8 +35,9 @@ jobs:
 
       - name: Package Cloudflare build output
         run: |
-          tar --dereference -czf open-next-cloudflare.tar.gz .open-next || true
+          tar --dereference -czf open-next-cloudflare.tar.gz .open-next
           test -s open-next-cloudflare.tar.gz
+          tar -tzf open-next-cloudflare.tar.gz > /dev/null
 
       - name: Upload Cloudflare build output
         uses: actions/upload-artifact@v7

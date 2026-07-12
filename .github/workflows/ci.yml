@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   ci:
-    name: Lint, typecheck, and test
+    name: Lint, typecheck, test, and build
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -42,6 +42,9 @@ jobs:
 
       - name: Test
         run: pnpm test
+
+      - name: Build
+        run: pnpm build
 
       - name: Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium

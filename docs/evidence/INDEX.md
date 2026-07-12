@@ -15,8 +15,9 @@ KeiriFlow AIの検証記録をまとめます。各記録は、その時点の�
 | typecheck | 通過 | GitHub CIで確認 |
 | Vitest | 21 files / 127 tests通過 | 業務ルール、API境界、provider境界、確認用キー制限 |
 | Playwright E2E | 主要画面5ルート通過 | `/dashboard`、`/invoices`、`/invoices/new`、`/invoices/export`、`/invoices/doc-001` |
-| build | 通過 | GitHub CIで確認 |
-| Cloudflare build / deploy | 通過 | Worker Version IDは外部サービス接続の記録を参照 |
+| build | 通過 | 2026-07-13に`pnpm build`を実行し、Next.jsの17 routeを生成 |
+| Cloudflare build | 通過 | 2026-07-13に`pnpm cf:build`を実行し、`.open-next/worker.js`を生成 |
+| Cloudflare deploy | 時点記録 | 2026-05-08のWorker Version IDは外部サービス接続の記録を参照 |
 | Lighthouse mobile | 82 / 100 / 100 / 100 | Performance / Accessibility / Best Practices / SEO |
 | Lighthouse desktop | 97 / 100 / 100 / 100 | Performance / Accessibility / Best Practices / SEO |
 

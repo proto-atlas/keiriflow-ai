@@ -67,9 +67,10 @@ AIが処理を自動で確定するのではなく、候補を出し、人が確
 - `pnpm typecheck`: 通過
 - `pnpm test`: 21 files / 127 tests通過
 - `pnpm e2e`: 主要画面5ルート通過
-- `pnpm build`: 通過
+- `pnpm build`: 2026-07-13に実行し、Next.jsの17 route生成まで通過
 - GitHub CI: main branchで成功
-- Cloudflare build / deploy: 通過
+- `pnpm cf:build`: 2026-07-13に実行し、`.open-next/worker.js`生成まで通過
+- Cloudflare deploy: 2026-05-08の時点記録は検証記録を参照
 - 外部サービス接続の確認: 合成画像1件で、アップロード、AI抽出、仕訳候補生成、承認、CSV出力、公開読み取りを特定時点で確認
 - Lighthouse: mobile 82 / 100 / 100 / 100、desktop 97 / 100 / 100 / 100
 
