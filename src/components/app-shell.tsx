@@ -11,9 +11,9 @@ const navItems = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
-    <main className="min-h-screen bg-slate-50 text-slate-950">
-      <div className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 lg:grid-cols-[240px_1fr]">
-        <aside className="border-b border-slate-200 bg-white px-5 py-5 lg:border-b-0 lg:border-r">
+    <main className="min-h-screen overflow-x-hidden bg-slate-50 text-slate-950">
+      <div className="mx-auto grid min-h-screen w-full max-w-7xl grid-cols-1 lg:grid-cols-[240px_minmax(0,1fr)]">
+        <aside className="min-w-0 border-b border-slate-200 bg-white px-5 py-5 lg:border-b-0 lg:border-r">
           <Link className="block" href="/dashboard">
             <p className="text-sm font-medium text-slate-500">KeiriFlow AI</p>
             <p className="mt-1 text-lg font-semibold">経理レビュー</p>
@@ -21,7 +21,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 p-3 text-xs leading-5 text-amber-900">
             この画面は合成データ確認用です。機密情報・個人情報を含むファイルは登録しないでください。
           </div>
-          <nav className="mt-6 flex gap-2 overflow-x-auto lg:flex-col">
+          <nav className="mt-6 flex max-w-full gap-2 overflow-x-auto lg:flex-col">
             {navItems.map((item) => {
               const Icon = item.icon;
 
@@ -39,7 +39,9 @@ export function AppShell({ children }: { children: ReactNode }) {
           </nav>
           <DemoAccessKeyPanel />
         </aside>
-        <section className="min-w-0 px-5 py-6 lg:px-8">{children}</section>
+        <section className="min-w-0 max-w-full overflow-x-hidden px-5 py-6 lg:px-8">
+          {children}
+        </section>
       </div>
     </main>
   );

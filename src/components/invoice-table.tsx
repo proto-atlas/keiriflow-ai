@@ -110,7 +110,7 @@ export function InvoiceTable({ documents }: InvoiceTableProps) {
         />
       </label>
 
-      <div className="overflow-x-auto rounded-lg border border-slate-200 bg-white">
+      <div className="max-w-full overflow-x-auto rounded-lg border border-slate-200 bg-white">
         <table className="w-full min-w-[1080px] text-left text-sm">
           <thead className="bg-slate-100 text-slate-600">
             {table.getHeaderGroups().map((headerGroup) => (

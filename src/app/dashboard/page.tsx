@@ -76,7 +76,7 @@ export default async function DashboardPage() {
             description="一覧・詳細・修正画面へ進むための起点です。"
             title="最近の証憑"
           >
-            <div className="overflow-x-auto">
+            <div className="max-w-full overflow-x-auto">
               <table className="w-full min-w-[640px] text-left text-sm">
                 <thead className="bg-slate-100 text-slate-600">
                   <tr>
