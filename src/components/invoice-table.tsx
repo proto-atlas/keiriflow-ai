@@ -99,7 +99,7 @@ export function InvoiceTable({ documents }: InvoiceTableProps) {
   });
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="min-w-0 flex flex-col gap-4">
       <label className="flex max-w-md items-center gap-2 rounded-md border border-slate-200 bg-white px-3 py-2 text-sm">
         <Search className="h-4 w-4 text-slate-400" />
         <input
