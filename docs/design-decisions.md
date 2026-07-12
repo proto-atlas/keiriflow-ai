@@ -154,7 +154,7 @@ Linux CI上の `pnpm cf:build` とCloudflare production envへのdeployは確認
 
 一方で、以下は主張しません。
 
-- 本番品質の会計ソフト
+- 実運用向け会計ソフト
 - 税務判断の正確性
 - 電子帳簿保存法やインボイス制度への完全対応
 - 特定会計ソフトとの完全互換CSV
