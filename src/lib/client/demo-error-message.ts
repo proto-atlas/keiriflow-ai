@@ -9,6 +9,9 @@ const demoErrorMessages: Record<string, string> = {
   demo_rate_limit_unavailable: "デモ利用制限を確認できないため、この操作は一時停止しています。",
   demo_rate_limited: "短時間の操作回数が上限に達しました。少し時間を置いて再度お試しください。",
   invalid_demo_key: "確認用キーが一致しません。",
+  provider_overloaded: "AIサービスが混雑しています。少し時間を置いて再度お試しください。",
+  provider_rate_limited: "AIサービスの利用回数が上限に達しました。少し時間を置いて再度お試しください。",
+  provider_timeout: "AI処理が時間内に完了しませんでした。少し時間を置いて再度お試しください。",
 };
 
 export async function readDemoErrorMessage(response: Response, fallbackMessage: string) {

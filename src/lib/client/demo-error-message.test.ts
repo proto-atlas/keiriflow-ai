@@ -18,6 +18,30 @@ describe("readDemoErrorMessage", () => {
     );
   });
 
+  it("provider_timeoutならAI処理の再試行案内を返す", async () => {
+    const response = Response.json({ error: "provider_timeout" }, { status: 502 });
+
+    await expect(readDemoErrorMessage(response, "失敗しました。")).resolves.toBe(
+      "AI処理が時間内に完了しませんでした。少し時間を置いて再度お試しください。",
+    );
+  });
+
+  it("provider_overloadedならAIサービス混雑の案内を返す", async () => {
+    const response = Response.json({ error: "provider_overloaded" }, { status: 502 });
+
+    await expect(readDemoErrorMessage(response, "失敗しました。")).resolves.toBe(
+      "AIサービスが混雑しています。少し時間を置いて再度お試しください。",
+    );
+  });
+
+  it("provider_rate_limitedならAIサービス利用上限の案内を返す", async () => {
+    const response = Response.json({ error: "provider_rate_limited" }, { status: 502 });
+
+    await expect(readDemoErrorMessage(response, "失敗しました。")).resolves.toBe(
+      "AIサービスの利用回数が上限に達しました。少し時間を置いて再度お試しください。",
+    );
+  });
+
   it("未知のerrorならfallbackを返す", async () => {
     const response = Response.json({ error: "unknown" }, { status: 500 });
 
