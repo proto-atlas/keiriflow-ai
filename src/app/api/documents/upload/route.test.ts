@@ -16,6 +16,14 @@ afterEach(() => {
 });
 
 describe("POST /api/documents/upload", () => {
+  it("multipartでないリクエストなら400 invalid_requestを返す", async () => {
+    const response = await POST(new Request("http://localhost/api/documents/upload", { method: "POST" }));
+    const body = (await response.json()) as { error: string };
+
+    expect(response.status).toBe(400);
+    expect(body.error).toBe("invalid_request");
+  });
+
   it("fileがない場合は400 file_requiredを返す", async () => {
     const formData = new FormData();
     formData.set("documentType", "invoice");
