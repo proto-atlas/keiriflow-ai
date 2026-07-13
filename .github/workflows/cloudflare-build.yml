@@ -11,6 +11,7 @@ jobs:
     name: Cloudflare deploy on Linux
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    environment: production
 
     steps:
       - name: Checkout
@@ -50,3 +51,14 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
         run: pnpm exec opennextjs-cloudflare deploy
+
+      - name: Verify production routes
+        run: |
+          for path in /dashboard /invoices /invoices/doc-001; do
+            response_file=$(mktemp)
+            status=$(curl --silent --show-error --retry 3 --retry-delay 2 \
+              --output "$response_file" --write-out "%{http_code}" \
+              "https://keiriflow-ai.atlas-lab.workers.dev${path}")
+            test "$status" = "200"
+            test -s "$response_file"
+          done
